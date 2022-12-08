@@ -8,7 +8,7 @@ from contextlib import contextmanager
 
 from mako.exceptions import CompileException, SyntaxException
 
-with atheris.instrument_imports():
+with atheris.instrument_imports(exclude=['ctypes', 'ctypes._endian']):
     import cppimport.import_hook
     import cppimport
 
