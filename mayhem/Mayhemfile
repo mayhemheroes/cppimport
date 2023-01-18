@@ -1,0 +1,8 @@
+project: cppimport
+target: import-fuzz
+testsuite:
+    - file://mayhem/testsuite
+cmds:
+  - cmd: /src/mayhem/fuzz_import.py
+    libfuzzer: true
+    timeout: 15
