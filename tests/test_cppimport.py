@@ -168,8 +168,12 @@ assert(not hasattr(mymodule, 'Thing'))
 def test_rebuild_header_after_change():
     cppimport.imp("mymodule")
     test_code = """
+import sys
 import cppimport;
 cppimport.settings["use_filelock"] = False;
+# Remove any cached modules to ensure clean rebuild
+if 'mymodule' in sys.modules:
+    del sys.modules['mymodule']
 mymodule = cppimport.imp("mymodule");
 mymodule.Thing().cheer()
 """
