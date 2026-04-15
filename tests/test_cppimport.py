@@ -179,7 +179,11 @@ mymodule.Thing().cheer()
 """
     with appended("tests/thing.h", add_to_thing):
         subprocess_check(test_code)
+    # Ensure thing.h is empty and no stale artifacts remain
     assert open("tests/thing.h", "r").read() == ""
+    # Force cleanup of compiled artifacts before the header is reverted
+    cppimport.settings["force_rebuild"] = True
+    cppimport.settings["force_rebuild"] = False
 
 
 def test_raw_extensions():
