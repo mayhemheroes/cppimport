@@ -72,6 +72,7 @@ def setup_pybind11(cfg):
     # MSVC compiler do not support "-std=c++11" nor "-fvisibility=hidden"
     if os.name == "nt":
         import sys
+
         if sys.version_info[0] >= 3 and sys.version_info[1] > 11:
             from setuptools._distutils import ccompiler
         else:
