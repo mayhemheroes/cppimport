@@ -18,3 +18,4 @@ htmlcov
 .eggs
 cppimport/_version.py
 *.lock
+logs
