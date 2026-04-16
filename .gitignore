@@ -1,5 +1,7 @@
 *.swp
 *.pyc
+*.pyd
+*.pyd.old
 *.so
 *.cppimporthash
 .rendered.*
