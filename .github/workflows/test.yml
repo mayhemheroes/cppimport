@@ -28,6 +28,8 @@ jobs:
             compiler: "mingw"
           - os: "macos-latest"
             compiler: "msvc"
+          - os: "windows-latest"
+            compiler: "default"
     name: Test (${{ matrix.python-version }}, ${{ matrix.os }}${{ matrix.os == 'windows-latest' && format(', {0}', matrix.compiler) || '' }})
     runs-on:  ${{ matrix.os }}
     defaults:
