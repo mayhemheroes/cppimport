@@ -131,6 +131,20 @@ class BuildImportCppExt(setuptools.command.build_ext.build_ext):
             src_filename = os.path.join(self.build_lib, filename)
             dest_filename = os.path.join(ext.libdest, os.path.basename(filename))
 
+            # On Windows, a loaded .pyd cannot be deleted or overwritten, but
+            # it can be renamed. Move the old file out of the way first.
+            if sys.platform == "win32" and os.path.exists(dest_filename):
+                old_filename = dest_filename + ".old"
+                try:
+                    if os.path.exists(old_filename):
+                        os.remove(old_filename)
+                except OSError:
+                    pass
+                try:
+                    os.rename(dest_filename, old_filename)
+                except OSError:
+                    pass
+
             distutils.file_util.copy_file(
                 src_filename, dest_filename, verbose=self.verbose
             )

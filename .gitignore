@@ -1,5 +1,7 @@
 *.swp
 *.pyc
+*.pyd
+*.pyd.old
 *.so
 *.cppimporthash
 .rendered.*
@@ -16,3 +18,4 @@ htmlcov
 .eggs
 cppimport/_version.py
 *.lock
+logs
