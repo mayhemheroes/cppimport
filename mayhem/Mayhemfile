@@ -1,0 +1,6 @@
+project: cppimport
+target: import-fuzz
+cmds:
+  - cmd: /mayhem/import-fuzz
+    libfuzzer: true
+    timeout: 30
